@@ -1,0 +1,46 @@
+{
+  "name": "webapp-eksamen",
+  "version": "1.0.0",
+  "main": "index.js",
+  "description": "Message System",
+  "scripts": {
+    "start": "concurrently npm:express npm:parcel",
+    "parcel": "parcel src/client/index.html",
+    "express": "nodemon --watch src/server src/server/server.js",
+    "format": "prettier  --write src",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HaraldSigvartsen/webapp-eksamen.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HaraldSigvartsen/webapp-eksamen/issues"
+  },
+  "homepage": "https://github.com/HaraldSigvartsen/webapp-eksamen#readme",
+  "devDependencies": {
+    "babel-jest": "^26.6.3",
+    "concurrently": "^6.0.2",
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.7",
+    "parcel": "^2.0.0-beta.2",
+    "prettier": "^2.2.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "eject": "0.0.4",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "socket.io": "^4.0.1",
+    "socket.io-client": "^4.0.1"
+  }
+}

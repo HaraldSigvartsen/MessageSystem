@@ -1,0 +1,44 @@
+body {
+  margin: 0;
+  padding: 0%;
+}
+#app {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100vh;
+}
+
+header {
+  background: grey;
+}
+header ul {
+  text-align: left;
+  padding-left: 60px;
+  text-decoration: none;
+}
+header li {
+  display: inline;
+  margin-left: 100px;
+  text-decoration: none;
+  font-size: 40px;
+}
+header h1 {
+  text-align: center;
+}
+
+main {
+  background: red;
+  overflow-y: auto;
+}
+
+footer {
+  background: green;
+}
+footer form {
+  display: flex;
+  align-items: strech;
+}
+footer form input {
+  flex: 1;
+  height: 100px;
+}
