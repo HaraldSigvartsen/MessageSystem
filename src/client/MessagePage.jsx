@@ -8,7 +8,7 @@ export function MessagePage() {
   const socketRef = useRef();
 
   useEffect(() => {
-    socketRef.current = io.connect("http://localhost:3001/socket.io/");
+    socketRef.current = io.connect("http://localhost:3000/socket.io/");
     socketRef.current.on("connect", () => {
       console.log("Connected");
       socketRef.current.on("message", ({ name, message }) => {
