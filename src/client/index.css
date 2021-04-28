@@ -42,3 +42,6 @@ footer form input {
   flex: 1;
   height: 100px;
 }
+.mainContainer {
+  padding-left: 50px;
+}

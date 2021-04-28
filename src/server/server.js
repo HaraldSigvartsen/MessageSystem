@@ -9,11 +9,16 @@ const app = express();
 const httpServer = require("http").createServer();
 const io = require("socket.io")(httpServer);
 
-io.on("connection", (socket) => {
-  socket.on("message", ({ name, message }) => {
-    io.emit("message", { name, message });
+try {
+  io.on("connection", (socket) => {
+    console.log("connection");
+    socket.on("message", ({ name, message }) => {
+      io.emit("message", { name, message });
+    });
   });
-});
+} catch (e) {
+  console.error(e);
+}
 
 app.use(cors());
 app.use(
@@ -54,6 +59,6 @@ app.use((req, res, next) => {
   }
 });
 
-app.listen(3000, () => {
-  console.log(`servers started on http://localhost:3000`);
+app.listen(3001, () => {
+  console.log(`servers started on http://localhost:3001`);
 });

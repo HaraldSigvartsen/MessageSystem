@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import io from "socket.io-client";
-import { InputField } from "./InputField";
 
 export function MessagePage() {
   const [state, setState] = useState({ message: "", name: "" });
@@ -9,12 +8,15 @@ export function MessagePage() {
   const socketRef = useRef();
 
   useEffect(() => {
-    socketRef.current = io.connect("http://localhost:3000/message");
-    socketRef.current.on("message", ({ name, message }) => {
-      setChat([...chat, { name, message }]);
+    socketRef.current = io.connect("http://localhost:3001/socket.io/");
+    socketRef.current.on("connect", () => {
+      console.log("Connected");
+      socketRef.current.on("message", ({ name, message }) => {
+        setChat((current) => [...current, { name, message }]);
+      });
     });
     return () => socketRef.current.disconnect();
-  }, [chat]);
+  }, []);
 
   // This is change the text equal to the property in the inputfields.
   const onTextChange = (e) => {
@@ -42,18 +44,22 @@ export function MessagePage() {
   return (
     <div className="mainContainer">
       <form onSubmit={onMessageSubmit}>
-        <h1>Messenger</h1>
+        <h1>Send a Message!</h1>
 
-        <InputField
-          label={"Name"}
-          onChange={(e) => onTextChange(e)}
+        <h4>Name</h4>
+        <input
+          type="text"
+          name="name"
+          onChange={onTextChange}
           value={state.name}
         />
 
         <div>
-          <InputField
-            label={"Message"}
-            onChange={(e) => onTextChange(e)}
+          <h4>Message</h4>
+          <input
+            type="text"
+            name="message"
+            onChange={onTextChange}
             value={state.message}
           />
         </div>
